@@ -8,6 +8,7 @@ public class FollowPlayer : MonoBehaviour
     public Vector3 _cameraOffset;
     [Range(0.01f, 1.0f)]
     public float smooth = 0.5f;
+    public float sens;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +22,11 @@ public class FollowPlayer : MonoBehaviour
         {
             Debug.Log("asd");
             x = Input.GetAxis("Mouse X");
-            Debug.Log("x = "+ x);
+            _cameraOffset = transform.position - player.position;
         }
-        transform.RotateAround(player.position, Vector3.up, x);
-        transform.LookAt(player);
+        transform.RotateAround(player.position, Vector3.up, x*sens);
+        
+        transform.LookAt(player.position);
     }
 
     // Update is called once per frame

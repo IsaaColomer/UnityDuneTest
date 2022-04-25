@@ -448,6 +448,7 @@ MonoBehaviour:
   player: {fileID: 200111975}
   _cameraOffset: {x: 0, y: 0, z: 0}
   smooth: 0.01
+  sens: 10
 --- !u!1 &1558583762
 GameObject:
   m_ObjectHideFlags: 0
