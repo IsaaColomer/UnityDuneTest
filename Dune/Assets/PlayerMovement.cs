@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class PlayerMovement : MonoBehaviour
 {
     private NavMeshAgent agent;
+    public GameObject cube;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 agent.SetDestination(hit.point);
-                
+                Instantiate(cube, hit.point, Quaternion.identity);
             }
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Knife : MonoBehaviour
 {
     public bool readyToKnife;
+    public LineRenderer lr;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,21 +15,38 @@ public class Knife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            readyToKnife = true;
+            if(!readyToKnife)
+            {
+                readyToKnife = true;
+            }
+            else
+            {
+                readyToKnife = false;
+            }
         }
         if(readyToKnife)
         {
+            
+            RaycastHit hit1;
+            Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);
+            lr.SetPosition(0, transform.position);
+            if(Physics.Raycast(ray1, out hit1, Mathf.Infinity))
+            {
+                lr.SetPosition(1, hit1.point);                    
+            }
+            
             if(Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("Clicked");
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if(Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    Debug.Log("aa");
-                    
+                    if(hit.transform.tag == "Enemy")
+                    {
+                        Destroy(hit.transform.gameObject);
+                    }
                 }
             }
         }
