@@ -21,12 +21,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse1))
         {
-            Debug.Log("Clicked");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
-                Debug.Log("aa");
                 agent.SetDestination(hit.point);
                 
             }

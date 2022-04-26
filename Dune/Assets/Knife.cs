@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stone : MonoBehaviour
+public class Knife : MonoBehaviour
 {
-    public GameObject stonePrefab;
-    public bool readyToThrow;
+    public bool readyToKnife;
     // Start is called before the first frame update
     void Start()
     {
-        readyToThrow = false;
+        
     }
 
     // Update is called once per frame
@@ -17,9 +16,9 @@ public class Stone : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Alpha1))
         {
-            readyToThrow = true;
+            readyToKnife = true;
         }
-        if(readyToThrow)
+        if(readyToKnife)
         {
             if(Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -29,7 +28,7 @@ public class Stone : MonoBehaviour
                 if(Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
                     Debug.Log("aa");
-                    Instantiate(stonePrefab, hit.point, Quaternion.identity);
+                    
                 }
             }
         }

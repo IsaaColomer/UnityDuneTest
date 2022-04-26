@@ -5,7 +5,6 @@ using UnityEngine;
 public class DestroyMe : MonoBehaviour
 {
     public float lifeTime = 3f;
-    private float lifeTime1;
     // Start is called before the first frame update
     void Start()
     {
