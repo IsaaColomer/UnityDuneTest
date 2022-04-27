@@ -5,11 +5,13 @@ using UnityEngine;
 public class Stone : MonoBehaviour
 {
     public GameObject stonePrefab;
+    public static Stone instance;
     public bool readyToThrow;
     // Start is called before the first frame update
     void Start()
     {
         readyToThrow = false;
+        instance = this;
     }
 
     // Update is called once per frame
@@ -18,6 +20,7 @@ public class Stone : MonoBehaviour
         if(Input.GetKey(KeyCode.Alpha1))
         {
             readyToThrow = true;
+            Knife.instance.readyToKnife = false;      
         }
         if(readyToThrow)
         {

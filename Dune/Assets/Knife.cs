@@ -6,10 +6,11 @@ public class Knife : MonoBehaviour
 {
     public bool readyToKnife;
     public LineRenderer lr;
+    public static Knife instance;
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -20,6 +21,7 @@ public class Knife : MonoBehaviour
             if(!readyToKnife)
             {
                 readyToKnife = true;
+                Stone.instance.readyToThrow = false;
             }
             else
             {
